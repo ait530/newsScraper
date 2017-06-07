@@ -1,7 +1,6 @@
 // Dependencies 
 var express = require("express");
 var bodyParser = require("body-parser");
-var logger = require("morgan");
 var mongoose = require("mongoose");
 var mongojs = require("mongojs");
 
@@ -24,8 +23,7 @@ var app = express();
 // Initialize Express
 var app = express();
 
-// Use morgan and body parser with our app
-app.use(logger("dev"));
+// logger adds enhanced logging capabilities and body parser (post routes/pulling data out of forms) with our app
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -48,6 +46,7 @@ db.once("open", function() {
 });
 
 
+// ======
 // Routes
 // ======
 
