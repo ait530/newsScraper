@@ -1,11 +1,11 @@
 // Dependencies 
 var express = require("express");
 var bodyParser = require("body-parser");
+var logger = require("morgan");
 var mongoose = require("mongoose");
 var mongojs = require("mongojs");
 
-// Not sure if needed?
-var logger = require("morgan");
+
 
 // Requiring our Note and Article models
 var Note = require("./models/Note.js");
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/week18day3mongoose");
+mongoose.connect("mongodb://localhost/newscraper");
 var db = mongoose.connection;
 
 // Show any mongoose errors
