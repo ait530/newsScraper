@@ -155,6 +155,34 @@ app.post("/articles/:id", function(req, res) {
 });
 
 
+// New note creation via POST route
+app.post("/submit", function(req, res) {
+  // Use our Note model to make a new note from the req.body
+  var newNote = new Note(req.body);
+  // Save the new note to mongoose
+  newNote.save(function(error, doc) {
+    // Send any errors to the browser
+    if (error) {
+      res.send(error);
+    }
+    // Otherwise
+    else {
+      // Find our user and push the new note id into the User's notes array
+      User.findOneAndUpdate({}, { $push: { "notes": doc._id } }, { new: true }, function(err, newdoc) {
+        // Send any errors to the browser
+        if (err) {
+          res.send(err);
+        }
+        // Or send the newdoc to the browser
+        else {
+          res.send(newdoc);
+        }
+      });
+    }
+  });
+});
+
+
 // Listen on port 3000
 app.listen(3000, function() {
   console.log("App running on port 3000!");
