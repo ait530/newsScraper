@@ -1,9 +1,15 @@
-// Dependencies 
+/* News Scraper 
+  *Back-End 
+  * ==================== */
+
+
+// ============
+// Dependencies
+// ============
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var mongojs = require("mongojs");
-
 
 
 // Requiring our Note and Article models
@@ -20,15 +26,12 @@ mongoose.Promise = Promise;
 // Initialize Express
 var app = express();
 
-// Initialize Express
-var app = express();
-
-// logger adds enhanced logging capabilities and body parser (post routes/pulling data out of forms) with our app
+// configure app for body parser (post routes/pulling data out of forms) with our app
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// Make public a static dir
+// Static file support with public folder
 app.use(express.static("public"));
 
 // Database configuration with mongoose
@@ -44,6 +47,7 @@ db.on("error", function(error) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
+
 
 
 // ======
@@ -184,7 +188,7 @@ app.post("/submit", function(req, res) {
 
 // Listen on port 3000
 app.listen(3000, function() {
-  console.log("App running on port 3000!");
+  console.log("Application running on port 3000!");
 });
 
 
