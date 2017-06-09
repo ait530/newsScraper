@@ -61,9 +61,9 @@ app.get("/scrape", function(req, res) {
 
 
   // First, tell the console what server.js is doing
-  console.log("\n***************************************\n"+ "Below is every headline and link\n" +
+  console.log("\n*********************************\n"+ "Below is every headline and link\n" +
     "from the Slashdot website:" +
-    "\n***************************************\n");
+    "\n*********************************\n");
 
   // First, we grab the body of the html with request
   request("https://slashdot.org/", function(error, response, html) {
