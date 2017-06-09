@@ -47,7 +47,7 @@ db.on("error", function(error) {
 
 // Once logged in to the db through mongoose, log a success message
 db.once("open", function() {
-  console.log("Mongoose connection successful.");
+  console.log("Mongoose connection successful ✔︎");
 });
 
 
@@ -61,7 +61,7 @@ app.get("/scrape", function(req, res) {
 
 
   // First, tell the console what server.js is doing
-  console.log("\n*********************************\n"+ "Below is every headline and link\n" +
+  console.log("\n*********************************\n"+ "Below is every article headline and link\n" +
     "from the Slashdot website:" +
     "\n*********************************\n");
 
@@ -197,5 +197,5 @@ app.post("/submit", function(req, res) {
 
 // Listen on port 3000
 app.listen(3000, function() {
-  console.log("Application running on port 3000!");
+  console.log("Application running on port 3000 ✔︎");
 });

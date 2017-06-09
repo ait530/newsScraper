@@ -12,4 +12,3 @@
 </ul>
 
 ### Images of Application in Action:
-
