@@ -61,16 +61,16 @@ app.get("/scrape", function(req, res) {
 
 
   // First, tell the console what server.js is doing
-  console.log("\n***************************************\n"+ "Below is every link and story headline\n" +
-    "from the Economist website:" +
+  console.log("\n***************************************\n"+ "Below is every headline and link\n" +
+    "from the Slashdot website:" +
     "\n***************************************\n");
 
   // First, we grab the body of the html with request
-  request("http://www.economist.com/", function(error, response, html) {
+  request("https://slashdot.org/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
+    $("span.story-title").each(function(i, element) {
 
       // Save an empty result object
       var result = {};
@@ -199,6 +199,3 @@ app.post("/submit", function(req, res) {
 app.listen(3000, function() {
   console.log("Application running on port 3000!");
 });
-
-
-
