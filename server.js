@@ -1,4 +1,4 @@
-/* News Scraper 
+/* NEWS SCRAPER 
   *Back-End 
   * ==================== */
 
@@ -16,8 +16,10 @@ var mongojs = require("mongojs");
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
-// Our scraping tools
+// Scraping Tools
+// Snatches HTML from URLS
 var request = require("request");
+// Scrapes desired HTML
 var cheerio = require("cheerio");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
@@ -56,6 +58,13 @@ db.once("open", function() {
 
 // A GET request to scrape the echojs website
 app.get("/scrape", function(req, res) {
+
+
+  // First, tell the console what server.js is doing
+  console.log("\n***************************************\n"+ "Below is every link and story headline\n" +
+    "from the Economist website:" +
+    "\n***************************************\n");
+
   // First, we grab the body of the html with request
   request("http://www.economist.com/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
