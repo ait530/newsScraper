@@ -198,24 +198,24 @@ app.post("/submit", function(req, res) {
 
 
 
-// Route to see what user looks like WITH populating
-app.get("/populateduser", function(req, res) {
-  // Prepare a query to find all users..
-  User.find({})
-    // ..and on top of that, populate the notes (replace the objectIds in the notes array with bona-fide notes)
-    .populate("notes")
-    // Now, execute the query
-    .exec(function(error, doc) {
-      // Send any errors to the browser
-      if (error) {
-        res.send(error);
-      }
-      // Or send the doc to the browser
-      else {
-        res.send(doc);
-      }
-    });
-});
+// // Route to see what user looks like WITH populating
+// app.get("/populateduser", function(req, res) {
+//   // Prepare a query to find all users..
+//   User.find({})
+//     // ..and on top of that, populate the notes (replace the objectIds in the notes array with bona-fide notes)
+//     .populate("notes")
+//     // Now, execute the query
+//     .exec(function(error, doc) {
+//       // Send any errors to the browser
+//       if (error) {
+//         res.send(error);
+//       }
+//       // Or send the doc to the browser
+//       else {
+//         res.send(doc);
+//       }
+//     });
+// });
 
 
 
