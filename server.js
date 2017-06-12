@@ -39,7 +39,12 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://heroku_pfrjtt36:rc6fj9k8ucucv7q4h11rlipffm@ds157631.mlab.com:57631/heroku_pfrjtt36");
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
+
+mongoose.connect("mongodb://heroku_5wwf1xjc:m0q5lkqfrv4764h8bk8nra1f52@ds053944.mlab.com:53944/heroku_5wwf1xjc", options);
+
+
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -221,7 +226,7 @@ app.post("/submit", function(req, res) {
 
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Application running on port 3000 ✔︎");
 });
 
